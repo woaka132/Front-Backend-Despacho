@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@100&family=Bruno+Ace&family=Montserrat:wght@100&family=Oswald:wght@300&family=Ubuntu+Condensed&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities{
+
+    .animation-delay-2000{
+        animation-delay: 2s;
+    }
+    .animation-delay-4000{
+        animation-delay: 4s;
+    }
+}
+
+.navBar{
+    @apply bg-gray-200  col-span-1 flex justify-end;
+}
+
+
+.navBtn{
+    @apply text-xl p-1 pr-2 w-full border-black border-t-0 hover:text-blue-600 hover:shadow-md ;
+}
+
+.activeNav{
+    @apply bg-blue-950 hover:text-gray-50 text-gray-50;
+}
+
+.cards{
+    @apply mb-7 relative cursor-pointer w-11/12 h-80 bg-gray-400 shadow-xl;
+}
+
+.cardImg{
+    @apply z-10 relative h-full object-cover hover:opacity-0 ease-in transition duration-300 ;
+}
+.cardTitle{
+    @apply opacity-90 p-1 pl-2 text-xl font-light w-full absolute bottom-0 z-50 text-black bg-slate-300;
+}
+
+.mainTitle{
+    @apply text-gray-100 tracking-wide uppercase text-center p-5 text-4xl font-bold lg:pb-10 sm:text-6xl;
+}
+
+.main{
+    @apply bg-cyan-900 col-span-5 h-screen;
+}
+
+.serviceCard{
+    @apply flex text-black  justify-center lg:justify-end relative h-min w-full mb-4  rounded-2xl overflow-hidden;
+}
+
+.sCardColor{
+    @apply   bg-gray-200 opacity-60 md:w-9/12 w-11/12 p-4 h-min rounded-xl shadow-xl md:shadow-none md:rounded-none;
+}
+
+
+@layer utilities {
+    @variants responsive {
+      /* Hide scrollbar for Chrome, Safari and Opera */
+      .no-scrollbar::-webkit-scrollbar {
+          display: none;
+      }
+
+      /* Hide scrollbar for IE, Edge and Firefox */
+      .no-scrollbar {
+          -ms-overflow-style: none;  /* IE and Edge */
+          scrollbar-width: none;  /* Firefox */
+      }
+    }
+  }
