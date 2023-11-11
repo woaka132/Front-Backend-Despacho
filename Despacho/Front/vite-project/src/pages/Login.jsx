@@ -1,15 +1,26 @@
 import { useForm } from "react-hook-form"
 import { useAuth } from "../context/AuthContext"
+import { useEffect } from "react"
+import { useNavigate, Link } from "react-router-dom"
 
 import navComp from "../components/nav"
 
 export default function LoginPage(){
     const { register, handleSubmit, formState:{errors}} = useForm()
-    const { signin,errors: LoginErrors } = useAuth()
+    const {  isAuthenticated, signin,errors: LoginErrors } = useAuth()
+    const navigate = useNavigate()
+
+    useEffect(()=>{
+        if (isAuthenticated) navigate('/')
+    },[isAuthenticated])
 
     const onSubmit = handleSubmit(async(data) => { 
         signin(data)
     })
+
+
+
+
     return(
         <div className="text-gray-700  overflow-hidden">
             {
@@ -30,9 +41,9 @@ export default function LoginPage(){
                                 <p className="text-sm mt-4">Si eres un miembro, Ingresa</p>
                                 <form className="flex flex-col gap-4" action="" onSubmit={onSubmit}>
                                     <input className="p-2 mt-6 rounded-xl border" type="text" name="email" placeholder="email" {...register("email",{required:true})}/>
-                                    { errors.email && <p className="text-red-500"> El usaurio2 es requeiro</p> }
+                                    { errors.email && <p className="text-red-500"> Campo requerido*</p> }
                                     <input className="p-2 rounded-xl border" type="password" name="password" placeholder="contraseña" {...register("password",{required:true})}/>
-                                    { errors.password && <p className="text-red-500"> El usaurio3 es requeiro</p> }
+                                    { errors.password && <p className="text-red-500"> Campo requerido*</p> }
                                     <button className="bg-[#42ABBD] rounded-xl text-white py-2.5" >Ingresar</button>
                                 </form>
                                 <div className="mt-10 grid grid-cols-3 items-center text-gray-400">
@@ -42,7 +53,7 @@ export default function LoginPage(){
                                 </div>
                                 <div className="mt-10 text-xs flex justify-between items-center">
                                     <p>¿No tienes cuenta? </p>
-                                    <a className="py-2 px-2 bg-white border rounded-x1"  href="signin.html">Registro</a>
+                                    <Link className="py-2 px-2 bg-white border rounded-x1"  to="/register">Registro</Link>
                                 </div>
                             </div>
                 

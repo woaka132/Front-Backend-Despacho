@@ -5,6 +5,7 @@ import cors from 'cors'
 
 import authRoutes from './routes/auth.routes.js'
 import taskRoutes from './routes/tasks.routes.js'
+import commentRoutes from './routes/comments.route.js'
 
 const app = express()
 
@@ -14,5 +15,6 @@ app.use(express.json())
 app.use(cookieParser())
 app.use('/api', authRoutes)
 app.use('/api', taskRoutes)
+app.use('/api', commentRoutes)
 
 export default app
