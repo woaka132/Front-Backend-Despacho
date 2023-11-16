@@ -21,7 +21,7 @@ function navComp(){
                     { isAuthenticated ? (
                         <>
                         <li className="navBtn "><Link to="/profile">Perfil</Link></li>
-                        <li className="navBtn "><Link to="/calendar">Agenda</Link></li>
+                        <li className="navBtn "><Link to="/agenda">Agenda</Link></li>
                         <li className="navBtn" onClick={()=>{
                             logout()
                         }}><Link to="/">Cerrar Sesión</Link></li>
