@@ -37,6 +37,7 @@ export default {
       '85vh': '85vh',
       '50vh': '50vh',
       '65vh': '65vh',
+      '100vh': '100vh',
     }
   },
   plugins: [],

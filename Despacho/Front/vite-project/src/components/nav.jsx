@@ -11,8 +11,13 @@ function navComp(){
                     <li className="navBtn"><a href="/galery">Galeria</a></li>
                     <li className="navBtn"><a href="/services">Servicios</a></li>
                     <li className="navBtn"><a href="contacto">Contacto</a></li>
+
                     <li className="navBtn "><a href="/login">Ingresar</a></li>
                     <li className="navBtn activeNav"><a href="/register">Registro</a></li>
+
+                    <li className="navBtn"><a href="/profile">Perfil</a></li>
+                    <li className="navBtn"><a href="/agenda">Agenda</a></li>
+                    <li className="navBtn"><a href="/register">Salir</a></li>
                 </ul>
             </nav>
             <script src="script.js"></script> 

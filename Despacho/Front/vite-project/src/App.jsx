@@ -10,6 +10,7 @@ import ServicesPage from "./pages/Services"
 import ProfilePage from "./pages/Profile"
 
 import { ProtectedRoute } from "./components/ProtectedRoute"
+import AgendaPage from "./pages/Agenda"
 
 function App(){
   return (
@@ -25,6 +26,7 @@ function App(){
           
           <Route element={<ProtectedRoute />}>
           <Route path="/profile" element={ <ProfilePage />}/>
+          <Route path="/agenda" element={ <AgendaPage />}/>
           </Route>
         </Routes>
       </BrowserRouter>
