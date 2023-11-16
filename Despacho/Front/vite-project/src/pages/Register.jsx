@@ -3,6 +3,8 @@ import { useAuth } from "../context/AuthContext"
 import { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 
+import  image from "../Images/R.png"
+
 import navComp from "../components/nav"
 
 export default function RegisterPage(){
@@ -33,9 +35,12 @@ export default function RegisterPage(){
                     <h1 className="mainTitle">Registro</h1>
                     <section className=" flex items-center justify-center relative p-5">
                         <div className="bg-cyan-100 rounded-2xl absolute flex left-1 animate-blob">
+                            <img  className=" h-[600px] z-20"  src={image} alt=""/> 
+                            <div  className="absolute w-full h-1/2 top-0 bg-orange-300 z-10 rounded-e-2xl"></div>
+                            <div  className="absolute w-full h-1/2 bottom-0 bg-yellow-200 z-10 rounded-s-2xl"></div>  
                         </div>
                         <form  onSubmit={onSubmit}>
-                        <div className="bg-gray-100 flex rounded-2xl shadow-1g p-5 z-10 relative">
+                        <div className="bg-gray-100 flex rounded-2xl shadow-1g p-5 z-20 relative">
                         
                         <div className="flex flex-col p-5 z-10">
                             <div className=" grid grid-cols-3 items-center text-gray-400">
