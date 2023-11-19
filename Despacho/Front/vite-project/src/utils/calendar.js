@@ -2,11 +2,12 @@ import dayjs from "dayjs";
 
 export const generateDate = (
 	month = dayjs().month(),
-	year = dayjs().year()
+	year = dayjs().year(),
+	busyDates = [],
+	myDates	= [],
 ) => {
 	const firstDateOfMonth = dayjs().year(year).month(month).startOf("month");
 	const lastDateOfMonth = dayjs().year(year).month(month).endOf("month");
-
 	const arrayOfDate = [];
 
 	// create prefix date
@@ -16,8 +17,12 @@ export const generateDate = (
 		arrayOfDate.push({
 			currentMonth: false,
 			date,
+			busy: busyDates.indexOf(firstDateOfMonth.day(i).format("DD/MM/YYYY")) > -1,
+			mine: myDates.indexOf(firstDateOfMonth.day(i).format("DD/MM/YYYY")) > -1,
 		});
+
 	}
+
 
 	// generate current date
 	for (let i = firstDateOfMonth.date(); i <= lastDateOfMonth.date(); i++) {
@@ -27,6 +32,9 @@ export const generateDate = (
 			today:
 				firstDateOfMonth.date(i).toDate().toDateString() ===
 				dayjs().toDate().toDateString(),
+			busy: busyDates.indexOf(firstDateOfMonth.date(i).format("DD/MM/YYYY")) > -1,
+			mine: myDates.indexOf(firstDateOfMonth.date(i).format("DD/MM/YYYY")) > -1,
+
 		});
 	}
 
@@ -40,7 +48,10 @@ export const generateDate = (
 		arrayOfDate.push({
 			currentMonth: false,
 			date: lastDateOfMonth.date(i),
+			busy: busyDates.indexOf(firstDateOfMonth.date(i).format("DD/MM/YYYY")) > -1,
+			mine: myDates.indexOf(firstDateOfMonth.date(i).format("DD/MM/YYYY")) > -1,
 		});
+		
 	}
 	return arrayOfDate;
 };

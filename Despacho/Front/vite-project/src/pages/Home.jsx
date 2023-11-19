@@ -10,13 +10,13 @@ export default function HomePage(){
                 {navComp()}                
                 <main className="main relative bg-slate-50">
                     <h1 className="mainTitle">Home</h1>
-                    <div className="pt-28 relative">
+                    <div className="pt-10 relative">
                         <div className="flex items-center justify-center px-16 p-5">
                             <div className="absolute top-52 left-2 w-72 h-72 bg-cyan-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob2"></div>
                             <div className="absolute top-52 left-56 w-72 h-72 bg-yellow-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob2 animation-delay-2000"></div>
                             <div className="absolute top-64 bottom-28 left-28 w-72 h-72 bg-pink-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob2 animation-delay-4000"></div>
                             <div className="sm:block hidden w-1/2 items-center justify-center z-0">
-                                <img className="absolute h-[350px] top-28 hidden md:block" src={Image}/>
+                                <img className="absolute top-10 h-[350px] hidden md:block" src={Image}/>
                             </div>
                             <div className="bg-cyan-50 text-justify flex flex-col md:w-1/2 p-5 rounded-xl z-10">
                     

@@ -8,7 +8,6 @@ import  GaleryPage  from "./pages/Galery"
 import ContactoPage from "./pages/Contacto"
 import ServicesPage from "./pages/Services"
 import ProfilePage from "./pages/Profile"
-import CalendarPage from "./pages/Calendar"
 
 import { ProtectedRoute } from "./components/ProtectedRoute"
 import AgendaPage from "./pages/Agenda"
@@ -28,7 +27,6 @@ function App(){
           <Route element={<ProtectedRoute />}>
           <Route path="/profile" element={ <ProfilePage />}/>
           <Route path="/agenda" element={ <AgendaPage />}/>
-          <Route path="/calendar" element={ <CalendarPage />}/>
           </Route>
         </Routes>
       </BrowserRouter>

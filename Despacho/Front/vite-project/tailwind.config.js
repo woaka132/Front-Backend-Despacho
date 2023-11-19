@@ -38,6 +38,7 @@ export default {
       '50vh': '50vh',
       '65vh': '65vh',
       '100vh': '100vh',
+      '100':	'26rem' /* 384px */
     }
   },
   plugins: [],

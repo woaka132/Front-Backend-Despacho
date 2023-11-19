@@ -1,4 +1,6 @@
 import navComp from '../components/nav'
+import { useForm } from "react-hook-form"
+import { useAuth } from "../context/AuthContext"
 
 import Image from '../Images/R2.png'
 
@@ -9,7 +11,7 @@ export default function ProfilePage(){
                 {navComp()}                
                 <main className="main relative bg-slate-50 h-100vh ">
                     <h1 className="mainTitle relative h-30">Profile</h1>
-                    <div className=' md:h-1/2  flex justify-center pt-20 md:flex-row flex-col items-center'>
+                    <div className=' md:h-96  flex justify-center md:pt-20 md:flex-row flex-col items-center'>
                         <div className='bg-white h-full w-11/12 sm:w-10/12 md:w-56  py-5 mb-1 md:mb-0 relative md:pt-20 mr-1 rounded flex items-center flex-col'>
                             <div className="bg-blue-200 rounded-full overflow-hidden w-48  ">
                                 <img className='h-36 ' src={Image} alt=""/>
