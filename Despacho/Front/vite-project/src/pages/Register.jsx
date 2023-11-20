@@ -31,7 +31,7 @@ export default function RegisterPage(){
             }
             <div className="sm:grid grid-cols-6">
                 {navComp()}
-                <main className="main">
+                <main className="main overflow-y-scroll no-scrollbar ">
                     <h1 className="mainTitle">Registro</h1>
                     <section className=" flex items-center justify-center relative p-5">
                         <div className="bg-cyan-100 rounded-2xl absolute flex left-1 animate-blob">

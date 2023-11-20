@@ -32,7 +32,7 @@ export default function LoginPage(){
             }
             <div className="md:grid grid-cols-6 ">
                 {navComp()}
-                <main className="main">
+                <main className="main overflow-y-scroll no-scrollbar ">
                     <h1 className="mainTitle">Login</h1>
                     <section className="flex items-center justify-center p-5">
                         <div className="bg-gray-100 flex rounded-2xl shadow-1g max-w-3xl p-5">
