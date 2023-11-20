@@ -21,7 +21,7 @@ export default function ProfilePage(){
 
     useEffect (() => {
         profile(user).then (values => {setprofil(values)})  
-    }, [ ]);
+    }, []);
 
     return (
 
@@ -35,7 +35,7 @@ export default function ProfilePage(){
                             <div className="bg-blue-200 rounded-full overflow-hidden w-48  ">
                                 <img className='h-36 ' src={Image} alt=""/>
                             </div>
-                            <p className='text-center'>@hotmail.com</p>
+                            <p className='text-center'>{profil.username}</p>
                         </div>
                         <div className='bg-slate-200 h-full w-11/12 sm:w-10/12 md:w-1/2 p-10 rounded'>
                             <div>

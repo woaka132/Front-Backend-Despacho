@@ -28,7 +28,7 @@ export default function AgendaPage(){
 	const [selectDate, setSelectDate] = useState(currentDate);
     const busyDates = [];
     const myDates = [];
-    const admin = false;
+    let admin = false;
 
     const {handleSubmit} = useForm()
     const [Dayss, setDayss] = useState ([]);
@@ -46,6 +46,10 @@ export default function AgendaPage(){
     useEffect (() => {
         Days().then (values =>(setDayss(values)))
     },[]);
+
+    if(user.email == "admin1@hotmail.com"){        
+        admin=true
+    }
     
     const onSubmit = handleSubmit(async() => {
         user.date = selectDate.format("DD/MM/YYYY")
@@ -54,8 +58,9 @@ export default function AgendaPage(){
     })
 
     Dayss.map( element =>{
-        ( element.user == user.id)?myDates.push(element.date):busyDates.push(element.date)
+        ( element.user == user.id)?myDates.push(element.date):busyDates.push(element.date)      
     })
+
 
     return (
         <div className="text-blue-950 h-full overflow-hidden">
