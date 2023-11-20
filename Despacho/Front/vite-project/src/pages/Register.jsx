@@ -52,20 +52,24 @@ export default function RegisterPage(){
                             <div className="grid grid-cols-4 gap-5 text-center text-sm">
                                 <div className="flex flex-col">
                                     <p>Nombre</p>
-                                    <input className="mt-2 p-1 rounded-xl text-center" type="text" placeholder="nombre" /*{...register("name",{required:true})}*/ />
+                                    <input className="mt-2 p-1 rounded-xl text-center" type="text" placeholder="nombre" {...register("name",{required:true})} />
                                 </div>
                                 <div className="flex flex-col">
                                     <p>Apellido Paterno</p>
-                                    <input className="mt-2 p-1 rounded-xl text-center" type="text" placeholder="paterno" /*{...register("midlename",{required:true})}*/ />
+                                    <input className="mt-2 p-1 rounded-xl text-center" type="text" placeholder="paterno" {...register("secondname",{required:true})} />
                                 </div>
                                 <div className="flex flex-col">
                                     <p>Apellido Materno</p>
-                                    <input className="mt-2 p-1 rounded-xl text-center" type="text"  placeholder="materno" /*{...register("lastname",{required:true})}*/ />
+                                    <input className="mt-2 p-1 rounded-xl text-center" type="text"  placeholder="materno" {...register("lastname",{required:true})} />
                                 </div>
                                 <div className="flex flex-col">
                                     <p>Alias</p>
                                     <input className="mt-2 p-1 rounded-xl text-center" type="text" placeholder="alias" /*{...register("alias",{required:true})}*/ />
                                 </div>
+                            { errors.name&& <p className="text-red-500"> El nombre es requeiro</p> }
+                            { errors.secondname && <p className="text-red-500"> El apellido paterno es requeiro</p> }
+                            { errors.lastname && <p className="text-red-500"> El apellido materno es requeiro</p> }
+
                             </div>
                 
                             <div className="mt-5 grid grid-cols-3 items-center text-gray-400">
@@ -77,20 +81,24 @@ export default function RegisterPage(){
                             <div className="grid grid-cols-4 gap-5 text-center text-sm">
                                 <div className="flex flex-col">
                                     <p>Calle</p>
-                                    <input className="mt-2 p-1 rounded-xl text-center" type="text" placeholder="calle" /*{...register("street",{required:true})}*/ />
+                                    <input className="mt-2 p-1 rounded-xl text-center" type="text" placeholder="calle" {...register("street",{required:true})} />
                                 </div>
                                 <div className="flex flex-col">
                                     <p>Numero</p>
-                                    <input className="mt-2 p-1 rounded-xl text-center" type="text" placeholder="numero" /*{...register("number",{required:true})}*//>
+                                    <input className="mt-2 p-1 rounded-xl text-center" type="text" placeholder="numero" {...register("streetnumber",{required:true})}/>
                                 </div>
                                 <div className="flex flex-col">
                                     <p>Colonia</p>
-                                    <input className="mt-2 p-1 rounded-xl text-center" type="text"  placeholder="colonia" /*{...register("cologne",{required:true})}*//>
+                                    <input className="mt-2 p-1 rounded-xl text-center" type="text"  placeholder="colonia" {...register("cologne",{required:true})}/>
                                 </div>
                                 <div className="flex flex-col">
                                     <p>Codigo Postal</p>
-                                    <input className="mt-2 p-1 rounded-xl text-center" type="text" placeholder="CP" /*{...register("PostalCode",{required:true})}*//>
+                                    <input className="mt-2 p-1 rounded-xl text-center" type="text" placeholder="CP" {...register("cp",{required:true})}/>
                                 </div>
+                            { errors.street&& <p className="text-red-500"> El nombre es requeiro</p> }
+                            { errors.streetnumber && <p className="text-red-500"> El apellido paterno es requeiro</p> }
+                            { errors.cologne && <p className="text-red-500"> El apellido materno es requeiro</p> }
+                            { errors.cp && <p className="text-red-500"> El apellido materno es requeiro</p> }
                             </div>
                 
                             <div className="mt-5 grid grid-cols-3 items-center text-gray-400">
@@ -106,12 +114,16 @@ export default function RegisterPage(){
                                 </div>
                                 <div className="flex flex-col">
                                     <p>Número teléfonico</p>
-                                    <input className="mt-2 p-1 rounded-xl text-center" type="text" placeholder="numero" /*{...register("cellphone",{required:true})}*//>
+                                    <input className="mt-2 p-1 rounded-xl text-center" type="text" placeholder="numero" {...register("cellphone",{required:true})}/>
                                 </div>
                                 <div className="flex flex-col">
                                     <p>Número local</p>
-                                    <input className="mt-2 p-1 rounded-xl text-center" type="text"  placeholder="numero" /*{...register("phone",{required:true})}*//>
+                                    <input className="mt-2 p-1 rounded-xl text-center" type="text"  placeholder="numero" {...register("phone",{required:true})}/>
                                 </div>
+                            { errors.email&& <p className="text-red-500"> El nombre es requeiro</p> }
+                            { errors.cellphone && <p className="text-red-500"> El apellido paterno es requeiro</p> }
+                            { errors.phone && <p className="text-red-500"> El apellido materno es requeiro</p> }
+
                             </div>
                             
                             <div className="mt-5 grid grid-cols-3 items-center text-gray-400">
@@ -136,7 +148,6 @@ export default function RegisterPage(){
                                 <button type="submit">Registrar</button>
                             </div>
                             { errors.username&& <p className="text-red-500"> El usaurio1 es requeiro</p> }
-                            { errors.email && <p className="text-red-500"> El usaurio2 es requeiro</p> }
                             { errors.password && <p className="text-red-500"> El usaurio3 es requeiro</p> }
                         </div>
                         

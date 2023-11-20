@@ -1,23 +1,51 @@
-import { Button } from 'react-day-picker';
 import navComp from '../components/nav'
 import { generateDate, months } from '../utils/calendar'
 import cn from "../utils/cn";
 import dayjs from "dayjs";
-import React, { useState } from "react";
+import  { useState , useEffect } from "react";
 import { GrFormNext, GrFormPrevious } from "react-icons/gr";
-import { useForm } from "react-hook-form"
 import { useAuth } from "../context/AuthContext"
+import { useForm } from "react-hook-form"
+import { getDays , CreateDays } from "../api/days.js"
+import { useNavigate } from "react-router-dom"
+
 
 
 export default function AgendaPage(){
-
+    const { user } = useAuth();
     const days = ["L", "M", "M", "J", "V", "S", "D"];
     const currentDate = dayjs();
     const [today, setToday] = useState(currentDate);
 	const [selectDate, setSelectDate] = useState(currentDate);
-    const busyDates = ["25/11/2023", "28/11/2023","05/12/2023","15/12/2023"];
-    const myDates = ["10/11/2023","20/11/2023", "30/11/2023","09/12/2023","25/12/2023"];
+    const busyDates = [];
+    const myDates = [];
+    const {handleSubmit} = useForm()
+    const [Dayss, setDayss] = useState ([]);
+    const navigate = useNavigate()
+
+    const Days = async () => {
+        try {
+            const res = await getDays()
+            return res.data
+        } catch (error) {
+            console.log(error.response)
+        }  
+    }
     
+    useEffect (() => {
+        Days().then (values =>(setDayss(values)))
+    },[]);
+    
+    const onSubmit = handleSubmit(async() => {
+        user.date = selectDate.format("DD/MM/YYYY")
+        CreateDays(user) 
+        return navigate(0)
+    })
+
+    Dayss.map( element =>{
+        ( element.user == user.id)?myDates.push(element.date):busyDates.push(element.date)
+    })
+
     return (
         <div className="text-blue-950 h-full">
             <div className="sm:grid grid-cols-6 h-full">
@@ -96,7 +124,7 @@ export default function AgendaPage(){
                                 </div>
                             </div>
                             
-                            <div className='h-52 md:h-100  bg-white p-5'>
+                            <form className='h-52 md:h-100  bg-white p-5'  onSubmit={onSubmit}>
                                 <h1 className='text-2xl text-center '>Citas agendadas</h1>
                                 <ul>
                                     <li></li>
@@ -110,11 +138,11 @@ export default function AgendaPage(){
                                 selectDate.format("DD/MM/YYYY")+ " No disponible":
                                 (myDates.indexOf(selectDate.format("DD/MM/YYYY")) > -1)?
                                 "Cita agendada: " + selectDate.format("DD/MM/YYYY"):
-                                (<button className='bg-gray-200 border-blue-800 p-2 shadow-md hover:bg-blue-800 hover:text-gray-50 font-normal ease-in duration-150'>Agendar: { selectDate.format("DD/MM/YYYY")} </button>)
-
+                                (<button className='bg-gray-200 border-blue-800 p-2 shadow-md hover:bg-blue-800 hover:text-gray-50 font-normal ease-in duration-150'>Agendar: { selectDate.format("DD/MM/YYYY")} </button>)    
                                 } 
+
                                 </h2>
-                            </div>  
+                            </form>  
                         </div>
                     </div>                    
                 </main>

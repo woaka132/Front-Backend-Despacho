@@ -2,6 +2,7 @@ import navComp from "../components/nav"
 
 import Img1 from "../Images/DesarrolloApps2.png"
 import Img2 from "../Images/softEmp2.png"
+import Img3 from "../Images/webDes2.png"
 
 export default function GaleryPage(){
     return(
@@ -41,7 +42,7 @@ export default function GaleryPage(){
                                 </div>
                             </div> 
                             <div className="cards">
-                                <img className="cardImg" src="img/webDes2.png" alt=""/>
+                                <img className="cardImg" src={Img3} alt=""/>
                                 <div>
                                     <p className="absolute top-0 p-5 text-justify text-lg">
                                         Lorem ipsum dolor sit amet consectetur adipisicing elit. 
@@ -55,7 +56,7 @@ export default function GaleryPage(){
                                 </div>
                             </div> 
                             <div className="cards">
-                                <img className="cardImg" src="img/softEmp2.png" alt=""/>
+                                <img className="cardImg" src={Img3} alt=""/>
                                 <div>
                                     <p className="absolute top-0 p-5 text-justify text-lg">
                                         Lorem ipsum dolor sit amet consectetur adipisicing elit. 
@@ -69,7 +70,7 @@ export default function GaleryPage(){
                                 </div>
                             </div> 
                             <div className="cards">
-                                <img className="cardImg" src="img/webDes2.png" alt=""/>
+                                <img className="cardImg" src={Img3} alt=""/>
                                 <div>
                                     <p className="absolute top-0 p-5 text-justify text-lg">
                                         Lorem ipsum dolor sit amet consectetur adipisicing elit. 
@@ -83,7 +84,7 @@ export default function GaleryPage(){
                                 </div>
                             </div> 
                             <div className="cards">
-                                <img className="cardImg" src="" alt=""/>
+                                <img className="cardImg" src={Img2} alt=""/>
                                 <div>
                                     <p className="absolute top-0 p-5 text-justify text-lg">
                                         Lorem ipsum dolor sit amet consectetur adipisicing elit. 
