@@ -8,6 +8,15 @@ import { GrFormNext, GrFormPrevious } from "react-icons/gr";
 import { useForm } from "react-hook-form"
 import { useAuth } from "../context/AuthContext"
 
+function printDates(myDates){
+    return myDates.map((date, index) => {
+        return (
+            <li key={index} className='font-light'>
+                {date}
+            </li>
+        );
+    });
+}
 
 export default function AgendaPage(){
 
@@ -17,13 +26,14 @@ export default function AgendaPage(){
 	const [selectDate, setSelectDate] = useState(currentDate);
     const busyDates = ["25/11/2023", "28/11/2023","05/12/2023","15/12/2023"];
     const myDates = ["10/11/2023","20/11/2023", "30/11/2023","09/12/2023","25/12/2023"];
+    const admin = false;
     
     return (
-        <div className="text-blue-950 h-full">
+        <div className="text-blue-950 h-full overflow-hidden">
             <div className="sm:grid grid-cols-6 h-full">
                 {navComp()}                
-                <main className="main relative bg-slate-50 h-100vh ">
-                    <h1 className="mainTitle relative h-30">Profile</h1>
+                <main className="main relative bg-slate-50 h-100vh overflow-y-scroll no-scrollbar ">
+                    <h1 className="mainTitle relative !pb-5 !md:pb-0 mb-20 md:mb-0">Profile</h1>
                     
                     <div className=' flex h-85vh items-center justify-center'>
                         <div className='flex flex-col md:flex-row rounded-xl overflow-hidden'>
@@ -77,7 +87,7 @@ export default function AgendaPage(){
                                                         currentMonth ? "":"text-gray-500",
                                                         today? "font-bold border-black border-2":"",
                                                         "bg-emerald-200 h-10 w-10 grid place-content-center rounded-full cursor-pointer hover:border-green-600 hover:bg-blue-100 hover:border",
-                                                        date<currentDate? "!bg-gray-200 text-gray-600 ":"",
+                                                        date<currentDate? "!bg-white text-gray-600 border-none":"",
                                                         mine? "!bg-blue-200  hover:border-blue-500 border-none":"", 
                                                         busy? "!bg-red-200   hover:border-red-500 border-none":"",
                                                         
@@ -96,14 +106,10 @@ export default function AgendaPage(){
                                 </div>
                             </div>
                             
-                            <div className='h-52 md:h-100  bg-white p-5'>
-                                <h1 className='text-2xl text-center '>Citas agendadas</h1>
-                                <ul>
-                                    <li></li>
-                                </ul>
-
-                                <h2 className='font-light'>No se ha agendado ninguna cita!</h2>
-                                <h2 className='font-light text-center'>{
+                            {!admin?
+                            <div className='md:w-60 h-72 md:h-100 bg-white p-5'>
+                                <h1 className='text-2xl text-center '>Agendar cita</h1>
+                                <h2 className='font-light text-center border-b-2 md:pb-5 md:mb-5 border-gray-300'>{
                                 (selectDate<currentDate)?
                                 selectDate.format("DD/MM/YYYY")+" Es fecha pasada":
                                 (busyDates.indexOf(selectDate.format("DD/MM/YYYY")) > -1)?
@@ -114,7 +120,25 @@ export default function AgendaPage(){
 
                                 } 
                                 </h2>
-                            </div>  
+                                <h1 className='text-2xl text-center '>Citas agendadas</h1>
+                                <h2 className='font-light h-40 md:h-52 overflow-y-scroll'>{
+                                    myDates.length!==0?
+                                    printDates(myDates):
+                                    "No se ha agendado ninguna cita!"
+                                }
+                                </h2>
+                               
+                            </div>:
+                            <div className='w-70 h-72 md:h-100  bg-white p-5'>
+                            <h1 className='text-2xl text-center '>Citas con clientes</h1>
+                            <h2 className='font-light h-56 md:h-80 overflow-y-scroll'>{
+                                busyDates.length!==0?
+                                printDates(busyDates):
+                                "No se ha agendado ninguna cita!"
+                            }
+                            </h2>
+                            </div>
+                        }
                         </div>
                     </div>                    
                 </main>

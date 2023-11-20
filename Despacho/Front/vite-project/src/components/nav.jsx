@@ -1,6 +1,19 @@
 import { Link } from "react-router-dom"
 import { useAuth } from "../context/AuthContext"
 
+function menu() {
+    if (document.readyState === 'complete') {
+        let nav = document.querySelector('#nav');
+        if(nav.classList.contains('hidden')) {
+            nav.classList.remove('hidden');
+        }
+        else
+        {
+            nav.classList.add('hidden');
+        }
+    }
+}
+
 
 function navComp(){
     const {  isAuthenticated, logout } = useAuth() 
@@ -11,7 +24,7 @@ function navComp(){
         <nav className="text-right w-full">
                 <div className="flex justify-between sm:justify-end">
                     <a href="index.html" className="cursor-pointer"><h1 className="text-2xl p-4 font-bold uppercase">Despacho Contable</h1></a>
-                    <svg className="w-12 sm:hidden cursor-pointer hover:rotate-180 transition ease-linear duration-300" id="burger" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path></svg>
+                    <svg className="w-12 sm:hidden cursor-pointer hover:rotate-180 transition ease-linear duration-300" onClick={menu} stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path></svg>
                 </div>
                 <ul className="hidden sm:block" id="nav">
                     <li className="navBtn "><Link to="/">Home</Link></li>
@@ -35,7 +48,6 @@ function navComp(){
 
                 </ul>
             </nav>
-            <script src="script.js"></script> 
         </div>
     )
 }

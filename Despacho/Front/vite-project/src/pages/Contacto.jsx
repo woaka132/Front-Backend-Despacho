@@ -44,7 +44,7 @@ export default function ContactoPage(){
             <div className="sm:grid grid-cols-6">
                 {navComp()}
                 
-                <main className="main">
+                <main className="main  overflow-y-scroll no-scrollbar ">
                     <div>
                         <h1 className="mainTitle">Contacto</h1>
                         <div className="pt-20 flex flex-col items-center ">
