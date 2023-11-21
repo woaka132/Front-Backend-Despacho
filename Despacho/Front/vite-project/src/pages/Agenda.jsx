@@ -10,15 +10,28 @@ import { getDays , CreateDays } from "../api/days.js"
 import { useNavigate } from "react-router-dom"
 
 
-function printDates(myDates){
-    return myDates.map((date, index) => {
+function printMail(dates){
+    return dates.map((date, index) => {
         return (
-            <li key={index} className='font-light'>
-                {date}
-            </li>
+            <div key={index} className='font-light'>
+                {index%2===0?
+                (<li>{date}</li>):
+                (<div className='font-light text-center border-b-2 md:pb-2 md:mb-1 border-gray-300'>{date}</div>)
+                }
+            </div>
         );
     });
 }
+function printDates(dates){
+    return dates.map((date, index) => {
+        return (
+            <div key={index} className='font-light'>
+                <li className='border-b-2 md:pb-2 md:mb-1 border-gray-300'>{date}</li>
+            </div>
+        );
+    });
+}
+
 
 export default function AgendaPage(){
     const { user } = useAuth();
@@ -28,6 +41,7 @@ export default function AgendaPage(){
 	const [selectDate, setSelectDate] = useState(currentDate);
     const busyDates = [];
     const myDates = [];
+    const adminDates = [];
     let admin = false;
 
     const {handleSubmit} = useForm()
@@ -58,9 +72,12 @@ export default function AgendaPage(){
     })
 
     Dayss.map( element =>{
-        ( element.user == user.id)?myDates.push(element.date):busyDates.push(element.date)      
-    })
+        ( element.user == user.id)?
+        myDates.push(element.date):
+        busyDates.push(element.date) 
+        adminDates.push(element.date, element.email)
 
+    })
 
     return (
         <div className="text-blue-950 h-full overflow-hidden">
@@ -155,7 +172,7 @@ export default function AgendaPage(){
 
                                 </h2>
                                 <h1 className='text-2xl text-center '>Citas agendadas</h1>
-                                <h2 className='font-light h-40 md:h-52 overflow-y-scroll'>{
+                                <h2 className='font-light h-40 md:h-52  pt-2 overflow-y-scroll'>{
                                     myDates.length!==0?
                                     printDates(myDates):
                                     "No se ha agendado ninguna cita!"
@@ -165,9 +182,9 @@ export default function AgendaPage(){
                             </form>:
                             <div className='w-70 h-72 md:h-100  bg-white p-5'>
                             <h1 className='text-2xl text-center '>Citas con clientes</h1>
-                            <h2 className='font-light h-56 md:h-80 overflow-y-scroll'>{
+                            <h2 className='font-light h-56 pt-2 md:h-80 overflow-y-scroll'>{
                                 busyDates.length!==0?
-                                printDates(busyDates):
+                                printMail(adminDates):
                                 "No se ha agendado ninguna cita!"
                             }
                             </h2>
